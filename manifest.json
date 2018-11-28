@@ -1,9 +1,9 @@
 {
   "name": "Word Note Extension",
-  "description" : "My First Chrome Extension",
-  "version": "1.0",
+  "description" : "Word Note Extension",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "storage"],
   "background": {
     "scripts": ["./src/js/background.js"],
     "persistent": false
