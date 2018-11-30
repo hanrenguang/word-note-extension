@@ -11,7 +11,7 @@
 $('.add').click(e => {
   e.preventDefault()
   let formArea = {}
-  $('form').serializeArray().forEach(item => {
+  $('form.add-box').serializeArray().forEach(item => {
     formArea[item.name] = item.value
   })
   $.post('http://localhost:8888/add', formArea, res => {

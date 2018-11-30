@@ -5,13 +5,19 @@
   <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-  <form>
-    <input type="text" class="search">
+  <form class="search-box">
+    <input type="text" class="search-input">
+    <input type="submit" class="search" value="搜索">
+  </form>
+  <form class="add-box">
     词：<input type="text" name="word" class="word" autofocus>
     词性：<input type="text" name="part-of-speech" class="part-of-speech">
     释义：<input type="text" name="paraphrase" class="paraphrase">
     <input type="submit" class="add" value="添加">
   </form>
+  <p class="show-msg"></p>
+
+  <a href="./word.html" class="word-page">温故而知新</a>
 
   <script src="./js/jquery-3.3.1.min.js"></script>
   <script src="./js/index.js"></script>

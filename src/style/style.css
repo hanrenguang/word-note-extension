@@ -5,8 +5,7 @@
 }
 body {
   width: 420px;
-  height: 200px;
-  padding-top: 20px;
+  padding: 5px 0;
 }
 form {
   display: flex;
@@ -14,6 +13,10 @@ form {
   align-items: center;
   margin-left: 10px;
   font-size: 14px;
+}
+form.search-box {
+  margin-bottom: 10px;
+  padding-right: 12px;
 }
 input[type="text"] {
   height: 25px;
@@ -23,8 +26,9 @@ input[type="text"] {
   text-indent: 2px;
   outline: none;
 }
-input.search {
-  display: none;
+input.search-input {
+  flex: 1 1 auto;
+  width: 230px;
 }
 input.word {
   width: 80px;
@@ -35,7 +39,7 @@ input.part-of-speech {
 input.paraphrase {
   width: 100px;
 }
-input.add {
+input.add, input.search {
   width: 40px;
   height: 25px;
   border: 1px solid #68f;
@@ -43,4 +47,18 @@ input.add {
   color: #fff;
   background-color: #68f;
   cursor: pointer;
+}
+
+p.show-msg {
+  margin: 5px 0 0px 10px;
+  height: 20px;
+  line-height: 20px;
+  color: #f23;
+  font-size: 14px;
+}
+
+a.word-page {
+  float: right;
+  margin: 0 10px 10px 0;
+  color: rgb(150, 171, 248);
 }
