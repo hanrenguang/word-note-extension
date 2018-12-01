@@ -14,11 +14,12 @@ $('.add').click(e => {
   $('form.add-box').serializeArray().forEach(item => {
     formArea[item.name] = item.value
   })
+  formArea['part-of-speech'] = formArea['part-of-speech'] + '.'
   $.post('http://localhost:8888/add', formArea, res => {
     if (!res.status) {
       console.log(msg)
     }
 
-    $('form').get(0).reset()
+    $('form.add-box').get(0).reset()
   })
 })

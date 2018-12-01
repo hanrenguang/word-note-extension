@@ -23,5 +23,14 @@
     "32": "./src/icons/icon32.png",
     "48": "./src/icons/icon48.png",
     "128": "./src/icons/icon128.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "MacCtrl+Shift+Z"
+      },
+      "description": "Opens index.html"
+    }
   }
 }
