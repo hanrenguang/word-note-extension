@@ -45,8 +45,39 @@ app.post('/add', (req, res, next) => {
 })
 
 app.post('/search', (req, res, next) => {
-  
-  res.send('...')
+  let word = req.body.word
+
+  new Promise((resolve, reject) => {
+    fs.readFile('./storage/words.json', {encoding: 'utf-8'}, (err, data) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  }).then(data => {
+    if (!data) {
+      data = "{}"
+    }
+    data = JSON.parse(data)
+    if (data[word]) {
+      res.send({
+        status: 1,
+        wordInfo: {
+          word: word,
+          paraphrase: data[word]
+        }
+      })
+    } else {
+      res.send({
+        status: 1,
+        wordInfo: null
+      })
+    }
+  }).catch(reason => {
+    console.log(reason)
+    res.send({status: 0, msg: reason})
+  })
 })
 
 app.post('/getOne', (req, res, next) => {
