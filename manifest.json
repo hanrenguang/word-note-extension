@@ -3,7 +3,7 @@
   "description" : "Word Note Extension",
   "version": "1.0.0",
   "manifest_version": 2,
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["storage"],
   "background": {
     "scripts": ["./src/js/background.js"],
     "persistent": false

@@ -42,6 +42,12 @@ $('.search').click(e => {
     // TODO show search result
     let wordInfo = res.wordInfo
 
+    chrome.storage.sync.set({
+      searchWord: wordInfo
+    }, () => {
+      window.location.href = './word.html?isSearch=true'
+    })
+
     $('form.search-box').get(0).reset()
   })
 })
