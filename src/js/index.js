@@ -1,13 +1,20 @@
-// let changeColor = document.querySelector('p');
+let verify = formData => {
+  let result = true
 
-// changeColor.onclick = function() {
-//   let color = 'rgb(0, 0, 0)';
-//   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//     chrome.tabs.executeScript(
-//         tabs[0].id,
-//         {code: 'document.body.style.backgroundColor = "' + color + '";'});
-//   });
-// };
+  if (!formData.word.trim()) result = false
+  else if (!formData['part-of-speech'].trim()) result = false
+  else if (!formData.paraphrase.trim()) result = false
+
+  return result
+}
+
+let showMsg = msg => {
+  $('.show-msg').html(msg)
+  setTimeout(() => {
+    $('.show-msg').html('')
+  }, 3000)
+}
+
 $('.add').click(e => {
   e.preventDefault()
   let formArea = {}
@@ -15,6 +22,12 @@ $('.add').click(e => {
   $('form.add-box').serializeArray().forEach(item => {
     formArea[item.name] = item.value
   })
+
+  if (!verify(formArea)) {
+    showMsg('verify faild')
+    return
+  }
+
   formArea['part-of-speech'] = formArea['part-of-speech'] + '.'
 
   $.post('http://localhost:8888/add', formArea, res => {
@@ -42,11 +55,15 @@ $('.search').click(e => {
     // TODO show search result
     let wordInfo = res.wordInfo
 
-    chrome.storage.sync.set({
-      searchWord: wordInfo
-    }, () => {
-      window.location.href = './word.html?isSearch=true'
-    })
+    if (wordInfo) {
+      chrome.storage.sync.set({
+        searchWord: wordInfo
+      }, () => {
+        window.location.href = './word.html?isSearch=true'
+      })
+    } else {
+      showMsg('word not found')
+    }
 
     $('form.search-box').get(0).reset()
   })
