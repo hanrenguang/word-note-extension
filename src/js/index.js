@@ -68,3 +68,13 @@ $('.search').click(e => {
     $('form.search-box').get(0).reset()
   })
 })
+
+$.post('http://localhost:8888/getOne', {}, res => {
+  if (res.status == 1) {
+    chrome.storage.local.set({words: res.wordInfo}, () => {})
+
+    chrome.storage.sync.set({flag: 0}, () => {
+      console.log('set')
+    })
+  }
+})
